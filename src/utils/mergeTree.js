@@ -225,10 +225,10 @@ async function mergeBlobs({
     format,
     markerSize,
   })
-  if (!cleanMerge) {
+  /*if (!cleanMerge) {
     // all other types of conflicts fail
     throw new MergeNotSupportedError()
-  }
+  }*/
   const oid = await writeObject({
     fs,
     gitdir,

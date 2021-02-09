@@ -137,6 +137,13 @@ export async function _push({
     httpRemote.refs.get(fullRemoteRef) ||
     '0000000000000000000000000000000000000000'
 
+  if (oid === oldoid) {
+    // Bail because we're trying to push the same commit
+    return {
+      ok: true,
+    }
+  }
+
   // Remotes can always accept thin-packs UNLESS they specify the 'no-thin' capability
   const thinPack = !httpRemote.capabilities.has('no-thin')
 

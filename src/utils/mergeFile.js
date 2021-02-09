@@ -28,15 +28,11 @@ export function mergeFile({
     }
     if (item.conflict) {
       cleanMerge = false
-      mergedText += `${'<'.repeat(markerSize)} ${ourName}\n`
+      mergedText += `> Start of conflict. These are the changes you did here:\n`
       mergedText += item.conflict.a.join('')
-      if (format === 'diff3') {
-        mergedText += `${'|'.repeat(markerSize)} ${baseName}\n`
-        mergedText += item.conflict.o.join('')
-      }
-      mergedText += `${'='.repeat(markerSize)}\n`
+      mergedText += `> These are the changes you did elsewhere:\n`
       mergedText += item.conflict.b.join('')
-      mergedText += `${'>'.repeat(markerSize)} ${theirName}\n`
+      mergedText += `> End of conflict\n`
     }
   }
   return { cleanMerge, mergedText }
